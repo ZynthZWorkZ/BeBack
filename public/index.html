@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We'll Be Back Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .logo svg {
+            width: 45px;
+            height: 45px;
+            fill: white;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #9a9a9a;
+            margin-bottom: 50px;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .loader-circle {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #2a2a3e;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .info-box p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            text-decoration: none;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+
+        /* Background decoration */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-decoration::before,
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+        }
+
+        .bg-decoration::before {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            right: -200px;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .bg-decoration::after {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            left: -150px;
+            animation: float 12s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(30px, 30px) rotate(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration"></div>
+    
+    <div class="container">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M16 7V3h-2v4h-4V3H8v4h-.01C6.9 7 6 7.9 6 8.99v5.49L9.5 18v3h5v-3l3.5-3.51V9c0-1.1-.9-2-2-2V7zm-2 5.5c0 .55-.45 1-1 1s-1-.45-1-1v-3c0-.55.45-1 1-1s1 .45 1 1v3z"/>
+            </svg>
+        </div>
+
+        <h1>We'll Be Back Soon</h1>
+        
+        <p class="subtitle">Our website is currently undergoing scheduled maintenance</p>
+        
+        <div class="loader">
+            <div class="loader-circle"></div>
+        </div>
+        
+        <p class="message">
+            We're working hard to improve your experience. Our team is making some exciting updates 
+            to bring you an even better service. Thank you for your patience!
+        </p>
+
+        <div class="info-box">
+            <p><strong>What's happening?</strong></p>
+            <p>We're upgrading our systems to serve you better. We expect to be back online shortly.</p>
+            <p style="margin-top: 20px;">If you need immediate assistance, please check back soon.</p>
+        </div>
+
+        <!-- Optional: Uncomment and add your social media links -->
+        <!--
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                </svg>
+            </a>
+        </div>
+        -->
+    </div>
+</body>
+</html>
